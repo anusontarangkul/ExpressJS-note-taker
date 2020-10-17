@@ -26,3 +26,6 @@ class db {
 
     }
 }
+
+module.exports = db;
+console.log()
