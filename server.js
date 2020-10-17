@@ -2,7 +2,7 @@ const express = require("express");
 // const apiRoutes = require("./routes/apiRoutes");
 // const htmlRoutes = require("./routes/htmlRoutes");
 // const database = require("./db/db.json");
-// const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const path = require("path");
 // const util = require('util');
 const fs = require('fs');
@@ -70,8 +70,10 @@ app.put("/api/clear", function (req, res) {
 
 app.delete("/api/notes/:id", (req, res) => {
 
-    noteEntry = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
-    let noteID = req.param.id;
+    let noteEntry = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+    console.log(noteEntry);
+    let noteID = req.params.id;
+    console.log(noteID);
     let index = 0;
     noteEntry = noteEntry.filter(answer => {
         return answer.id != noteID;
@@ -85,6 +87,24 @@ app.delete("/api/notes/:id", (req, res) => {
     fs.writeFileSync("./db/db.json", JSON.stringify(noteEntry));
 
 })
+
+// router.delete('/notes/:id', (req, res) => {
+//     console.log("\x1b[31m", "DELETE request incoming", "\x1b[00m");
+//     console.log(res.statusCode);
+//     console.log("================");
+//     console.log("\x1b[31m", "writing new database after deleting an item", "\x1b[00m");
+//     let filteredArr = notesFuncs.filterOutId(req.params.id, notes);
+//     //console.log(filteredArr);
+//     //using filter i need to reassign the old array wiht the new one
+//     // but not using filter i can just pass filterd Arr here......wierd
+//     notes  = filteredArr;
+//     if (notes) {  
+//       //console.log(notes);
+//       res.json(notes);
+//     } else {
+//       res.sendStatus(404);
+//     }
+//   });
 
 
 
