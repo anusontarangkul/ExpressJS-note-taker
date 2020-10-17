@@ -9,6 +9,13 @@ This app helps you take and organize notes.
 
 ![gif](./gif.gif)
 
+## Technologies
+
+- Javascript
+- Node.js
+- Express.js
+- HTML
+- CSS
 ## Installation
 
 npm install
