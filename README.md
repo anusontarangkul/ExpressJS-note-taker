@@ -1,6 +1,7 @@
 # Note Taker
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://note-taker-application-express.herokuapp.com/)
 
 ## Description
 
