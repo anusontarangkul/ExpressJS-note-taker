@@ -52,7 +52,7 @@ app.get("/api/notes/:id", (req, res) => {
 app.post("/api/notes", (req, res) => {
     noteEntry = fs.readFileSync("./db/db.json", "utf8");
     noteEntry = JSON.parse(noteEntry);
-    req.body.id = noteEntry.length;
+    req.body.id = uuidv4();
     noteEntry.push(req.body);
     noteEntry = JSON.stringify(noteEntry);
     res.json(noteEntry);
@@ -87,25 +87,6 @@ app.delete("/api/notes/:id", (req, res) => {
     fs.writeFileSync("./db/db.json", JSON.stringify(noteEntry));
 
 })
-
-// router.delete('/notes/:id', (req, res) => {
-//     console.log("\x1b[31m", "DELETE request incoming", "\x1b[00m");
-//     console.log(res.statusCode);
-//     console.log("================");
-//     console.log("\x1b[31m", "writing new database after deleting an item", "\x1b[00m");
-//     let filteredArr = notesFuncs.filterOutId(req.params.id, notes);
-//     //console.log(filteredArr);
-//     //using filter i need to reassign the old array wiht the new one
-//     // but not using filter i can just pass filterd Arr here......wierd
-//     notes  = filteredArr;
-//     if (notes) {  
-//       //console.log(notes);
-//       res.json(notes);
-//     } else {
-//       res.sendStatus(404);
-//     }
-//   });
-
 
 
 app.listen(PORT, function () {
