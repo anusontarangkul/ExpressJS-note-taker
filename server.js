@@ -1,10 +1,8 @@
 const express = require("express");
-// const apiRoutes = require("./routes/apiRoutes");
-// const htmlRoutes = require("./routes/htmlRoutes");
-// const database = require("./db/db.json");
+
 const { v4: uuidv4 } = require('uuid');
 const path = require("path");
-// const util = require('util');
+
 const fs = require('fs');
 
 const app = express();
@@ -38,7 +36,7 @@ app.get("/api/notes", (req, res) => {
     noteEntry = JSON.parse(noteEntry);
 });
 
-// add app get ID ":id"
+
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "public/index.html"))
 })
@@ -59,9 +57,6 @@ app.post("/api/notes", (req, res) => {
     fs.writeFileSync("./db/db.json", noteEntry, "utf8");
 })
 
-// app.use(express.static("public"));
-// // app.use("/api", apiRoutes);
-// app.use("/", htmlRoutes);
 
 app.put("/api/clear", function (req, res) {
     noteEntry = [];
@@ -87,7 +82,6 @@ app.delete("/api/notes/:id", (req, res) => {
     fs.writeFileSync("./db/db.json", JSON.stringify(noteEntry));
 
 })
-
 
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
